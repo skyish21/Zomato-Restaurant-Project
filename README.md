@@ -39,20 +39,23 @@ python app.py
 ```
 2. Open http://127.0.0.1:5000/ in your browser.
 
-## Deployment
-To deploy on a cloud platform like Heroku:
+## Running the Streamlit App
+1. Start the Streamlit server:
 
-1. Install the Heroku CLI and log in.
-2. Create a Procfile with:
 ```bash
-web: python app.py
+streamlit run app.py
 ```
-3. Deploy using:
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-heroku create
-git push heroku master
+2. Access the web app: Open http://localhost:8501 in your browser.
+
+## Deployment
+To deploy on a cloud platform, you can use Streamlit Cloud or any other cloud platform that supports Streamlit apps.
+
+Push your code to a GitHub repository.
+
+1. Deploy to Streamlit Cloud:
+
+2. Go to Streamlit Cloud.
+- Sign in with your GitHub account and deploy the app.
+- Now, your application is live!
 
 
