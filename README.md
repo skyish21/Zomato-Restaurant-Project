@@ -20,18 +20,21 @@ The dataset used in this project is from Zomato, which includes restaurant detai
 | **Longitude**             | Longitude coordinate of the restaurant’s location.                                    |
 | **Latitude**              | Latitude coordinate of the restaurant’s location.                                     |
 | **Cuisines**              | The type(s) of cuisine offered by the restaurant.                                     |
-| **Average Cost for Two**  | Cost for two people in different currencies.                                          |
 | **Currency**              | Currency of the country where the restaurant is located.                              |
 | **Has Table booking**     | Indicates if the restaurant provides table booking (Yes/No).                          |
 | **Has Online delivery**   | Indicates if the restaurant provides online delivery (Yes/No).                        |
 | **Is delivering**         | Indicates if the restaurant is currently delivering (Yes/No).                         |
 | **Switch to order menu**  | Indicates if there is a switch to an ordering menu (Yes/No).                          |
-| **Price range**           | Price range of the restaurant (e.g., 1-4).                                            |
 | **Aggregate Rating**      | Average rating of the restaurant out of 5.                                            |
 | **Rating color**          | Color corresponding to the average rating.                                            |
 | **Rating text**           | Textual representation of the rating (e.g., Good, Very Good, Excellent).              |
 | **Votes**                 | Number of ratings cast by customers.                                                  |
 
+## 🏷️ Labels 
+| **Labels**               | **Description**                                                                        |
+|---------------------------|----------------------------------------------------------------------------------------|
+| **Price range**           | Price range of the restaurant (e.g., 1-4).                                             |
+| **Average Cost for Two**  | Cost for two people in different currencies.                                           |
 
 ## 🔧 Installation
 1. Clone the repository:
