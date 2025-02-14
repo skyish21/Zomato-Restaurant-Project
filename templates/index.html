@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zomato Cost & Price Prediction</title>
+    <style>
+        body {
+            background: url("{{ url_for('static', filename='zomato_bg.png') }}") no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 40%;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            color: white;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input, select {
+            width: 90%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        button {
+            background-color: #e23744;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #b82e38;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Zomato Cost & Price Prediction</h1>
+        <form id="predictionForm">
+            <input type="text" name="Restaurant ID" placeholder="Restaurant ID" required>
+            <input type="text" name="Country Code" placeholder="Country Code" required>
+            <input type="text" name="City" placeholder="City" required>
+            <input type="text" name="Locality" placeholder="Locality" required>
+            <input type="text" name="Longitude" placeholder="Longitude" required>
+            <input type="text" name="Latitude" placeholder="Latitude" required>
+            <input type="text" name="Cuisines" placeholder="Cuisines" required>
+            <input type="text" name="Currency" placeholder="Currency" required>
+            <input type="text" name="Has Table booking" placeholder="Has Table booking (Yes/No)" required>
+            <input type="text" name="Has Online delivery" placeholder="Has Online delivery (Yes/No)" required>
+            <input type="text" name="Is delivering now" placeholder="Is delivering now (Yes/No)" required>
+            <input type="text" name="Aggregate rating" placeholder="Aggregate rating" required>
+            <input type="text" name="Rating color" placeholder="Rating color" required>
+            <input type="text" name="Rating text" placeholder="Rating text" required>
+            <input type="text" name="Votes" placeholder="Votes" required>
+            <button type="submit">Predict</button>
+        </form>
+        
+        <div class="result" id="predictionResult">
+            <p><strong>Predicted Price Range:</strong> <span id="price_range_output"></span></p>
+            <p><strong>Predicted Average Cost for Two:</strong> <span id="avg_cost_output"></span></p>
+        </div>
+        
+    </div>
+
+    <script>
+        document.getElementById("predictionForm").addEventListener("submit", async function(event) {
+    event.preventDefault(); // Prevent page reload
+    
+    let formData = new FormData(this); // Get form data
+
+    try {
+        let response = await fetch("/predict", {
+            method: "POST",
+            body: formData
+        });
+
+        let result = await response.json(); // Parse JSON response
+        console.log("Received API Response:", result); // Debugging
+
+        if (result.Error) {  // Fix: Properly check for errors
+            document.getElementById("predictionResult").innerHTML = `<p style="color:red;">Error: ${result.Error}</p>`;
+        } else {
+            document.getElementById("price_range_output").innerText = result.price_range;
+            document.getElementById("avg_cost_output").innerText = "₹" + result.avg_cost;
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        document.getElementById("predictionResult").innerHTML = `<p style="color:red;">Something went wrong!</p>`;
+    }
+});
+
+    </script>
+</body>
+</html>
+
+
+
