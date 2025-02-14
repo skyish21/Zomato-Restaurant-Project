@@ -79,4 +79,9 @@ Push your code to a GitHub repository.
 - Sign in with your GitHub account and deploy the app.
 - Now, your application is live!
 
+## 🎯 Future Enhancements
+- Improve model accuracy with hyperparameter tuning.
+
+- Add more user-friendly UI elements.
+
 
